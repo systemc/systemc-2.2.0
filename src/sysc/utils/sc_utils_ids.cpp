@@ -59,7 +59,8 @@
 //
 
 #include "sysc/utils/sc_report.h"
-
+#include "string.h"
+#include "cstdlib"
 
 namespace sc_core {
 #define SC_DEFINE_MESSAGE(id,unused,text) extern const char id[] = text;
