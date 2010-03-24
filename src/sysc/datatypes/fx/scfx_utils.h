@@ -138,11 +138,11 @@ scfx_parse_prefix( const char*& s )
 	case 'b':
 	case 'B':
 	{
-	    if( s[2] == 'u' || s[2] == 'U' && s[3] == 's' || s[3] == 'S' ) {
+	    if( (s[2] == 'u' || s[2] == 'U') && (s[3] == 's' || s[3] == 'S') ) {
 		s += 4;
 		return SC_BIN_US;
 	    }
-	    if( s[2] == 's' || s[2] == 'S' && s[3] == 'm' || s[3] == 'M' ) {
+	    if( (s[2] == 's' || s[2] == 'S') && (s[3] == 'm' || s[3] == 'M') ) {
 		s += 4;
 		return SC_BIN_SM;
 	    }
@@ -152,11 +152,11 @@ scfx_parse_prefix( const char*& s )
 	case 'o':
 	case 'O':
 	{
-	    if( s[2] == 'u' || s[2] == 'U' && s[3] == 's' || s[3] == 'S' ) {
+	    if( (s[2] == 'u' || s[2] == 'U') && (s[3] == 's' || s[3] == 'S') ) {
 		s += 4;
 		return SC_OCT_US;
 	    }
-	    if( s[2] == 's' || s[2] == 'S' && s[3] == 'm' || s[3] == 'M' ) {
+	    if( (s[2] == 's' || s[2] == 'S') && (s[3] == 'm' || s[3] == 'M') ) {
 		s += 4;
 		return SC_OCT_SM;
 	    }
@@ -166,11 +166,11 @@ scfx_parse_prefix( const char*& s )
 	case 'x':
 	case 'X':
 	{
-	    if( s[2] == 'u' || s[2] == 'U' && s[3] == 's' || s[3] == 'S' ) {
+	    if( (s[2] == 'u' || s[2] == 'U') && (s[3] == 's' || s[3] == 'S') ) {
 		s += 4;
 		return SC_HEX_US;
 	    }
-	    if( s[2] == 's' || s[2] == 'S' && s[3] == 'm' || s[3] == 'M' ) {
+	    if( (s[2] == 's' || s[2] == 'S') && (s[3] == 'm' || s[3] == 'M') ) {
 		s += 4;
 		return SC_HEX_SM;
 	    }
@@ -186,7 +186,7 @@ scfx_parse_prefix( const char*& s )
 	case 'c':
 	case 'C':
 	{
-	    if( s[2] == 's' || s[2] == 'S' && s[3] == 'd' || s[3] == 'D' ) {
+	    if( (s[2] == 's' || s[2] == 'S') && (s[3] == 'd' || s[3] == 'D') ) {
 		s += 4;
 		return SC_CSD;
 	    }
