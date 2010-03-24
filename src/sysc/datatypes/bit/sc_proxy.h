@@ -999,8 +999,8 @@ b_and_assign_( sc_proxy<X>& px, const sc_proxy<Y>& py )
 	sc_digit x_dw, x_cw, y_dw, y_cw;
 	get_words_( x, i, x_dw, x_cw );
 	get_words_( y, i, y_dw, y_cw );
-	sc_digit cw = x_dw & y_cw | x_cw & y_dw | x_cw & y_cw;
-	sc_digit dw = cw | x_dw & y_dw;
+	sc_digit cw = (x_dw & y_cw) | (x_cw & y_dw) | (x_cw & y_cw);
+	sc_digit dw = cw | (x_dw & y_dw);
 	set_words_( x, i, dw, cw );
     }
     // tail cleaning not needed
@@ -1023,7 +1023,7 @@ b_or_assign_( sc_proxy<X>& px, const sc_proxy<Y>& py )
 	sc_digit x_dw, x_cw, y_dw, y_cw;
 	get_words_( x, i, x_dw, x_cw );
 	get_words_( y, i, y_dw, y_cw );
-	sc_digit cw = x_cw & y_cw | x_cw & ~y_dw | ~x_dw & y_cw;
+	sc_digit cw = (x_cw & y_cw) | (x_cw & ~y_dw) | ( ~x_dw & y_cw );
 	sc_digit dw = cw | x_dw | y_dw;
 	set_words_( x, i, dw, cw );
     }
@@ -1048,7 +1048,7 @@ b_xor_assign_( sc_proxy<X>& a, const sc_proxy<Y>& b )
 	get_words_( x, i, x_dw, x_cw );
 	get_words_( y, i, y_dw, y_cw );
 	sc_digit cw = x_cw | y_cw;
-	sc_digit dw = cw | x_dw ^ y_dw;
+	sc_digit dw = cw | (x_dw ^ y_dw);
 	set_words_( x, i, dw, cw );
     }
     // tail cleaning not needed
