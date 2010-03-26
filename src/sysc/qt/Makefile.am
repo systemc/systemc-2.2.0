@@ -32,27 +32,28 @@
 
 include $(top_srcdir)/config/Make-rules
 
-noinst_LIBRARIES = libqt.a
+noinst_LTLIBRARIES = libqt.la
 
 H_FILES = \
 	qt.h \
 	qtmd.h
 
-noinst_HEADERS = $(H_FILES)
+library_include_HEADERS = $(H_FILES)
 
 C_FILES = \
 	qt.c \
-	qtmdc.c
+	qtmdc.c \
+	qtmds.s
 
-libqt_a_SOURCES = $(H_FILES) $(C_FILES)
+libqt_la_SOURCES = $(H_FILES) $(C_FILES)
 
-libqt_a_LIBADD = qtmds.o
+# libqt_la_LIBADD = qtmds.o
 
 INCLUDE_DIR = $(prefix)/include/sysc/qt
-
+library_includedir = $(INCLUDE_DIR)
 qt.o qtmdc.c qtmds.s: configuration
-qtmds.o: qtmds.s
-	$(AS) -o qtmds.o qtmds.s $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES)
+# qtmds.o: qtmds.s
+# 	$(AS) -o qtmds.o qtmds.s $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES)
 
 configuration:
 	@test -d md || ln -s $(srcdir)/md .
@@ -61,32 +62,5 @@ configuration:
 clean:
 	-rm -f configuration qtmdc.c qtmds.s
 	-test -h md && rm -f md || true
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(INCLUDE_DIR)
-	for file in $(noinst_HEADERS); do \
-	  $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	done
-	$(mkinstalldirs) $(INCLUDE_DIR)/md
-	list=`echo md/*`; \
-	  for file in $$list; do \
-	    $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	  done
-	$(AR_TOOL) $(top_builddir)/src/$(MAIN_LIBRARY) \
-	  $(libqt_a_OBJECTS) $(libqt_a_LIBADD)
-
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	for file in $(noinst_HEADERS); do \
-	  rm -f $(INCLUDE_DIR)/$$file; \
-	done
-	list=`echo md/*`; \
-	  for file in $$list; do \
-	    rm -f $(INCLUDE_DIR)/$$file; \
-	  done
-	-rmdir $(INCLUDE_DIR)/md
-	-rmdir $(INCLUDE_DIR)
 
 ## Taf!

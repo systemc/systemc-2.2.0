@@ -32,7 +32,7 @@
 
 include $(top_srcdir)/config/Make-rules
 
-noinst_LIBRARIES = libkernel.a
+noinst_LTLIBRARIES = libkernel.la
 
 H_FILES = \
 	sc_attribute.h \
@@ -77,7 +77,8 @@ NO_H_FILES = \
 	sc_simcontext_int.h
 	sc_thread_process.h 
 
-noinst_HEADERS = $(H_FILES)
+library_include_HEADERS = $(H_FILES)
+noinst_HEADERS = $(NO_H_FILES)
 
 CXX_FILES = \
 	sc_attribute.cpp \
@@ -108,24 +109,8 @@ CXX_FILES = \
 
 NO_CXX_FILES =
 
-libkernel_a_SOURCES = $(H_FILES) $(CXX_FILES)
+libkernel_la_SOURCES = $(H_FILES) $(CXX_FILES) # $(NO_H_FILES) 
 
 INCLUDE_DIR = $(prefix)/include/sysc/kernel
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(INCLUDE_DIR)
-	for file in $(noinst_HEADERS); do \
-	  $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	done
-	$(AR_TOOL) $(top_builddir)/src/$(MAIN_LIBRARY) \
-	  $(libkernel_a_OBJECTS)
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	for file in $(noinst_HEADERS); do \
-	  rm -f $(INCLUDE_DIR)/$$file; \
-	done
-	-rmdir $(INCLUDE_DIR)
-
+library_includedir = $(INCLUDE_DIR)
 ## Taf!

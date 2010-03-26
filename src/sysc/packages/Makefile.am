@@ -37,12 +37,5 @@ SUBDIRS = \
 	.
 
 INCLUDE_DIR = $(prefix)/include/sysc/packages
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	-rmdir $(INCLUDE_DIR)
-
+library_includedir = $(INCLUDE_DIR)
 ## Taf!

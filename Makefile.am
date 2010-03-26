@@ -61,33 +61,4 @@ pthreads_debug:
 pthreads_check:
 	$(MAKE) check CXXFLAGS="$(EXTRA_CXXFLAGS) -DSC_USE_PTHREADS" LDFLAGS="-lpthread"
 
-install-data-local:
-	@$(NORMAL_INSTALL)
-	for file in $(INST_FILES); do \
-	  d=$(srcdir); \
-	  if test -d $$d/$$file; then \
-	    test -d $(prefix)/$$file \
-	    || cp -pr $$d/$$file $(prefix) || :; \
-	  else \
-	    test -f $(prefix)/$$file \
-	    || cp -p $$d/$$file $(prefix)/$$file || :; \
-	  fi; \
-	done
-#@(cd ./examples; $(MAKE) install;)
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	w=`pwd`; cd $(srcdir); s=`pwd`; cd $$w; \
-	if test $(prefix) != $$s; then \
-	  for file in $(INST_FILES); do \
-	    d=$(srcdir); \
-	    if test -d $$d/$$file; then \
-	      rm -rf $(prefix)/$$file; \
-	    else \
-	      rm -f $(prefix)/$$file; \
-	    fi; \
-	  done; \
-	fi
-	@(cd ./examples; $(MAKE) uninstall;)
-
 ## Taf!

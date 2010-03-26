@@ -32,7 +32,7 @@
 
 include $(top_srcdir)/config/Make-rules
 
-noinst_LIBRARIES = libutils.a
+noinst_LTLIBRARIES = libutils.la
 
 H_FILES = \
 	sc_hash.h \
@@ -51,7 +51,8 @@ H_FILES = \
 NO_H_FILES = \
 	sc_stop_here.h
 
-noinst_HEADERS = $(H_FILES)
+library_include_HEADERS = $(H_FILES)
+noinst_HEADERS = $(NO_H_FILES)
 
 CXX_FILES = \
 	sc_hash.cpp \
@@ -66,29 +67,13 @@ CXX_FILES = \
 
 NO_CXX_FILES =
 
-libutils_a_SOURCES = $(H_FILES) $(CXX_FILES)
+libutils_la_SOURCES = $(H_FILES) $(CXX_FILES) # $(NO_H_FILES)
 
 INCLUDE_DIR = $(prefix)/include/sysc/utils
-
+library_includedir = $(INCLUDE_DIR)
 CXXCOMPILE_DEBUG = $(CXX) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(EXTRA_CXXFLAGS) $(DEBUG_CXXFLAGS)
 
 sc_stop_here.o: sc_stop_here.cpp
 	$(CXXCOMPILE_DEBUG) -c $<
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(INCLUDE_DIR)
-	for file in $(noinst_HEADERS); do \
-	  $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	done
-	$(AR_TOOL) $(top_builddir)/src/$(MAIN_LIBRARY) \
-	  $(libutils_a_OBJECTS)
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	for file in $(noinst_HEADERS); do \
-	  rm -f $(INCLUDE_DIR)/$$file; \
-	done
-	-rmdir $(INCLUDE_DIR)
 
 ## Taf!

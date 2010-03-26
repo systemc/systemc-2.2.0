@@ -32,7 +32,7 @@
 
 include $(top_srcdir)/config/Make-rules
 
-noinst_LIBRARIES = 
+noinst_LTLIBRARIES = 
 
 H_FILES = \
 	posix_features.hpp \
@@ -42,7 +42,7 @@ H_FILES = \
 	suffix.hpp \
 	user.hpp
 
-noinst_HEADERS = $(H_FILES)
+library_include_HEADERS = $(H_FILES)
 
 SUBDIRS = \
 	compiler \
@@ -51,19 +51,5 @@ SUBDIRS = \
 	.
 
 INCLUDE_DIR = $(prefix)/include/sysc/packages/boost/config
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(INCLUDE_DIR)
-	for file in $(noinst_HEADERS); do \
-	  $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	done
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	for file in $(noinst_HEADERS); do \
-	  rm -f $(INCLUDE_DIR)/$$file; \
-	done
-	-rmdir $(INCLUDE_DIR)
-
+library_includedir = $(INCLUDE_DIR)
 ## Taf!

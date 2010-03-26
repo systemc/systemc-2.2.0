@@ -36,7 +36,7 @@ H_FILES = \
 	systemc \
 	systemc.h
 
-noinst_HEADERS = $(H_FILES)
+library_include_HEADERS = $(H_FILES)
 
 CXX_FILES =
 
@@ -47,25 +47,5 @@ SUBDIRS = \
 	.
 
 INCLUDE_DIR = $(prefix)/include
-
-install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(INCLUDE_DIR)
-	for file in $(noinst_HEADERS); do \
-	  $(INSTALL_DATA) $(srcdir)/$$file $(INCLUDE_DIR)/$$file; \
-	done
-	$(mkinstalldirs) $(prefix)/lib-$(TARGET_ARCH)
-	$(INSTALL_DATA) $(MAIN_LIBRARY) \
-	  $(prefix)/lib-$(TARGET_ARCH)/$(MAIN_LIBRARY)
-	$(RANLIB) $(prefix)/lib-$(TARGET_ARCH)/$(MAIN_LIBRARY)
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	for file in $(noinst_HEADERS); do \
-	  rm -f $(INCLUDE_DIR)/$$file; \
-	done
-	-rmdir $(INCLUDE_DIR)
-	rm -f $(prefix)/lib-$(TARGET_ARCH)/$(MAIN_LIBRARY)
-	-rmdir $(prefix)/lib-$(TARGET_ARCH)
-
+library_includedir = $(INCLUDE_DIR)
 ## Taf!

@@ -43,12 +43,21 @@ SUBDIRS = \
 	.
 
 INCLUDE_DIR = $(prefix)/include/sysc
+library_includedir = $(INCLUDE_DIR)
 
-install-data-local:
-	@$(NORMAL_INSTALL)
+lib_LTLIBRARIES= libsystemc.la
+libsystemc_la_SOURCES=
+libsystemc_la_LIBADD= \
+	communication/libcommunication.la \
+	datatypes/bit/libbit.la \
+	datatypes/fx/libfx.la \
+	datatypes/int/libint.la \
+	datatypes/misc/libmisc.la \
+	kernel/libkernel.la \
+	qt/libqt.la \
+	tracing/libtracing.la \
+	utils/libutils.la
 
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	-rmdir $(INCLUDE_DIR)
+libsystemc_la_LDFLAGS = -version-info 0:0:0
 
 ## Taf!
