@@ -1,0 +1,49 @@
+Source: systemc22
+Section: non-free/libs
+Priority: optional
+Maintainer: Puneet Goel <puneet@systemc.in>
+Build-Depends: cdbs (>= 0.4.27-1), debhelper (>= 4.2.0), automake
+Standards-Version: 3.7.2
+
+Package: libsystemc22-dev
+Architecture: any
+Section: non-free/libdevel
+Depends: libsystemc22
+Description: SystemC(TM) v2.2.0 development libraries
+ SystemC is a set of C++ classes and macros which provide an
+ event-driven simulation kernel in C++. These facilities enable a
+ designer to simulate concurrent processes, each described using plain
+ C++ syntax. SystemC processes can communicate in a simulated
+ real-time environment, using signals of all the datatypes offered by
+ C++, some additional ones offered by the SystemC library, as well as
+ user defined. In certain respects, SystemC deliberately mimics the
+ hardware description languages VHDL and Verilog, but is more aptly
+ described as a system-level modeling language.
+
+Package: libsystemc22
+Architecture: any
+Section: non-free/libs
+Description: SystemC(TM) v2.2.0 runtime libraries
+ SystemC is a set of C++ classes and macros which provide an
+ event-driven simulation kernel in C++. These facilities enable a
+ designer to simulate concurrent processes, each described using plain
+ C++ syntax. SystemC processes can communicate in a simulated
+ real-time environment, using signals of all the datatypes offered by
+ C++, some additional ones offered by the SystemC library, as well as
+ user defined. In certain respects, SystemC deliberately mimics the
+ hardware description languages VHDL and Verilog, but is more aptly
+ described as a system-level modeling language.
+
+Package: systemc22-doc
+Architecture: all
+Section: non-free/doc
+Description: SystemC(TM) v2.2.0 PDF documentation
+ SystemC is a set of C++ classes and macros which provide an
+ event-driven simulation kernel in C++. These facilities enable a
+ designer to simulate concurrent processes, each described using plain
+ C++ syntax. SystemC processes can communicate in a simulated
+ real-time environment, using signals of all the datatypes offered by
+ C++, some additional ones offered by the SystemC library, as well as
+ user defined. In certain respects, SystemC deliberately mimics the
+ hardware description languages VHDL and Verilog, but is more aptly
+ described as a system-level modeling language.

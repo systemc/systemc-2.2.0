@@ -1,0 +1,9 @@
+Debian Release of SystemC(TM) 2.2 libraries and documentation
+-------------------------------------------------------------
+
+SystemC 2.2 libraries are distributed into three separate packages:
+
+- libsystemc22-dev	provides the development libraries and headers
+- libsystemc22		provides the runtime libraries (shared libraries)
+- systemc22-doc		provides the documentation manuals (pdf)
+
