@@ -247,6 +247,7 @@ dnl
 
 AC_OUTPUT(
  Makefile 
+ docs/Makefile 
  src/Makefile 
  src/sysc/Makefile 
  src/sysc/communication/Makefile 
