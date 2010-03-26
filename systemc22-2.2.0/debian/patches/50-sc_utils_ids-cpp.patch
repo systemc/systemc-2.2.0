@@ -1,0 +1,14 @@
+diff --git src/sysc/utils/sc_utils_ids.cpp src/sysc/utils/sc_utils_ids.cpp
+index ec64b47..ebf4068 100644
+--- src/sysc/utils/sc_utils_ids.cpp
++++ src/sysc/utils/sc_utils_ids.cpp
+@@ -59,7 +59,8 @@
+ //
+ 
+ #include "sysc/utils/sc_report.h"
+-
++#include "string.h"
++#include "cstdlib"
+ 
+ namespace sc_core {
+ #define SC_DEFINE_MESSAGE(id,unused,text) extern const char id[] = text;
