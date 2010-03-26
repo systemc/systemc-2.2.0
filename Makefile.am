@@ -32,7 +32,6 @@
 
 SUBDIRS = \
 	src \
-	examples \
 	.
 
 INST_FILES = \
