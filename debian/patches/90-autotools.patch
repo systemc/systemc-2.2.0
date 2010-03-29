@@ -1,17 +1,16 @@
 diff --git Makefile.am Makefile.am
-index 1e99a7c..0698a9d 100644
+index 1e99a7c..7f0a88b 100644
 --- Makefile.am
 +++ Makefile.am
-@@ -32,7 +32,7 @@
+@@ -32,6 +32,7 @@
  
  SUBDIRS = \
  	src \
--	examples \
 +	docs \
+ 	examples \
  	.
  
- INST_FILES = \
-@@ -61,33 +61,4 @@ pthreads_debug:
+@@ -61,33 +62,4 @@ pthreads_debug:
  pthreads_check:
  	$(MAKE) check CXXFLAGS="$(EXTRA_CXXFLAGS) -DSC_USE_PTHREADS" LDFLAGS="-lpthread"
  
