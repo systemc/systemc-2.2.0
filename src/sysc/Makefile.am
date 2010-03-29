@@ -46,7 +46,12 @@ INCLUDE_DIR = $(prefix)/include/sysc
 library_includedir = $(INCLUDE_DIR)
 
 lib_LTLIBRARIES= libsystemc.la
+
+# Dummy C++ source to cause C++ linking.
+nodist_EXTRA_libsystemc_la_SOURCES = dummy.cxx
+
 libsystemc_la_SOURCES=
+
 libsystemc_la_LIBADD= \
 	communication/libcommunication.la \
 	datatypes/bit/libbit.la \
