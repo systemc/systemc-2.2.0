@@ -33,6 +33,7 @@
 SUBDIRS = \
 	src \
 	docs \
+	examples \
 	.
 
 INST_FILES = \
