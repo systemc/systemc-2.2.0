@@ -45,47 +45,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 SOURCES =
 DIST_SOURCES =
-RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
-	html-recursive info-recursive install-data-recursive \
-	install-dvi-recursive install-exec-recursive \
-	install-html-recursive install-info-recursive \
-	install-pdf-recursive install-ps-recursive install-recursive \
-	installcheck-recursive installdirs-recursive pdf-recursive \
-	ps-recursive uninstall-recursive
-RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
-  distclean-recursive maintainer-clean-recursive
-AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
-	$(RECURSIVE_CLEAN_TARGETS:-recursive=) tags TAGS ctags CTAGS \
-	distdir
-ETAGS = etags
-CTAGS = ctags
-DIST_SUBDIRS = $(SUBDIRS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-am__relativize = \
-  dir0=`pwd`; \
-  sed_first='s,^\([^/]*\)/.*$$,\1,'; \
-  sed_rest='s,^[^/]*/*,,'; \
-  sed_last='s,^.*/\([^/]*\)$$,\1,'; \
-  sed_butlast='s,/*[^/]*$$,,'; \
-  while test -n "$$dir1"; do \
-    first=`echo "$$dir1" | sed -e "$$sed_first"`; \
-    if test "$$first" != "."; then \
-      if test "$$first" = ".."; then \
-        dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
-        dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
-      else \
-        first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
-        if test "$$first2" = "$$first"; then \
-          dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
-        else \
-          dir2="../$$dir2"; \
-        fi; \
-        dir0="$$dir0"/"$$first"; \
-      fi; \
-    fi; \
-    dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
-  done; \
-  reldir="$$dir2"
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AR = @AR@
@@ -216,12 +176,211 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = \
-	sysc \
-	.
+syscexamplesdir = $(prefix)/share/doc/systemc22/examples
+syscexamplesfiles = \
+	sysc/2.1/dpipe/dpipe.vcproj \
+	sysc/2.1/dpipe/main.cpp \
+	sysc/2.1/forkjoin/README.txt \
+	sysc/2.1/forkjoin/forkjoin.cpp \
+	sysc/2.1/forkjoin/forkjoin.vcproj \
+	sysc/2.1/reset_signal_is/reset_signal_is.cpp \
+	sysc/2.1/reset_signal_is/reset_signal_is.vcproj \
+	sysc/2.1/sc_export/README.txt \
+	sysc/2.1/sc_export/main.cpp \
+	sysc/2.1/sc_export/sc_export.vcproj \
+	sysc/2.1/sc_report/README.txt \
+	sysc/2.1/sc_report/main.cpp \
+	sysc/2.1/sc_report/sc_report.vcproj \
+	sysc/2.1/scx_barrier/main.cpp \
+	sysc/2.1/scx_barrier/scx_barrier.h \
+	sysc/2.1/scx_barrier/scx_barrier.vcproj \
+	sysc/2.1/scx_mutex_w_policy/scx_mutex_w_policy.cpp \
+	sysc/2.1/scx_mutex_w_policy/scx_mutex_w_policy.vcproj \
+	sysc/2.1/specialized_signals/main.cpp \
+	sysc/2.1/specialized_signals/scx_signal_int.cpp \
+	sysc/2.1/specialized_signals/scx_signal_int.h \
+	sysc/2.1/specialized_signals/scx_signal_signed.cpp \
+	sysc/2.1/specialized_signals/scx_signal_signed.h \
+	sysc/2.1/specialized_signals/scx_signal_uint.cpp \
+	sysc/2.1/specialized_signals/scx_signal_uint.h \
+	sysc/2.1/specialized_signals/scx_signal_unsigned.cpp \
+	sysc/2.1/specialized_signals/scx_signal_unsigned.h \
+	sysc/Readme_msvc71.txt \
+	sysc/fft/README \
+	sysc/fft/fft_flpt/fft.cpp \
+	sysc/fft/fft_flpt/fft.h \
+	sysc/fft/fft_flpt/fft_flpt.ncb \
+	sysc/fft/fft_flpt/fft_flpt.vcproj \
+	sysc/fft/fft_flpt/in_imag \
+	sysc/fft/fft_flpt/in_imag.1 \
+	sysc/fft/fft_flpt/in_imag.2 \
+	sysc/fft/fft_flpt/in_imag.3 \
+	sysc/fft/fft_flpt/in_imag.4 \
+	sysc/fft/fft_flpt/in_real \
+	sysc/fft/fft_flpt/in_real.1 \
+	sysc/fft/fft_flpt/in_real.2 \
+	sysc/fft/fft_flpt/in_real.3 \
+	sysc/fft/fft_flpt/in_real.4 \
+	sysc/fft/fft_flpt/main.cpp \
+	sysc/fft/fft_flpt/out_imag.1.golden \
+	sysc/fft/fft_flpt/out_imag.2.golden \
+	sysc/fft/fft_flpt/out_imag.3.golden \
+	sysc/fft/fft_flpt/out_imag.4.golden \
+	sysc/fft/fft_flpt/out_real.1.golden \
+	sysc/fft/fft_flpt/out_real.2.golden \
+	sysc/fft/fft_flpt/out_real.3.golden \
+	sysc/fft/fft_flpt/out_real.4.golden \
+	sysc/fft/fft_flpt/sink.cpp \
+	sysc/fft/fft_flpt/sink.h \
+	sysc/fft/fft_flpt/source.cpp \
+	sysc/fft/fft_flpt/source.h \
+	sysc/fft/fft_fxpt/fft.cpp \
+	sysc/fft/fft_fxpt/fft.h \
+	sysc/fft/fft_fxpt/fft_fxpt.vcproj \
+	sysc/fft/fft_fxpt/in_imag \
+	sysc/fft/fft_fxpt/in_imag.1 \
+	sysc/fft/fft_fxpt/in_imag.2 \
+	sysc/fft/fft_fxpt/in_imag.3 \
+	sysc/fft/fft_fxpt/in_imag.4 \
+	sysc/fft/fft_fxpt/in_real \
+	sysc/fft/fft_fxpt/in_real.1 \
+	sysc/fft/fft_fxpt/in_real.2 \
+	sysc/fft/fft_fxpt/in_real.3 \
+	sysc/fft/fft_fxpt/in_real.4 \
+	sysc/fft/fft_fxpt/main.cpp \
+	sysc/fft/fft_fxpt/out_imag.1.golden \
+	sysc/fft/fft_fxpt/out_imag.2.golden \
+	sysc/fft/fft_fxpt/out_imag.3.golden \
+	sysc/fft/fft_fxpt/out_imag.4.golden \
+	sysc/fft/fft_fxpt/out_real.1.golden \
+	sysc/fft/fft_fxpt/out_real.2.golden \
+	sysc/fft/fft_fxpt/out_real.3.golden \
+	sysc/fft/fft_fxpt/out_real.4.golden \
+	sysc/fft/fft_fxpt/sink.cpp \
+	sysc/fft/fft_fxpt/sink.h \
+	sysc/fft/fft_fxpt/source.cpp \
+	sysc/fft/fft_fxpt/source.h \
+	sysc/fir/README \
+	sysc/fir/display.cpp \
+	sysc/fir/display.h \
+	sysc/fir/fir.cpp \
+	sysc/fir/fir.h \
+	sysc/fir/fir.vcproj \
+	sysc/fir/fir_const.h \
+	sysc/fir/fir_data.cpp \
+	sysc/fir/fir_data.h \
+	sysc/fir/fir_fsm.cpp \
+	sysc/fir/fir_fsm.h \
+	sysc/fir/fir_top.h \
+	sysc/fir/log \
+	sysc/fir/main.cpp \
+	sysc/fir/main_rtl.cpp \
+	sysc/fir/rtl_log \
+	sysc/fir/stimulus.cpp \
+	sysc/fir/stimulus.h \
+	sysc/pipe/README \
+	sysc/pipe/display.cpp \
+	sysc/pipe/display.h \
+	sysc/pipe/golden.log \
+	sysc/pipe/main.cpp \
+	sysc/pipe/numgen.cpp \
+	sysc/pipe/numgen.h \
+	sysc/pipe/pipe.vcproj \
+	sysc/pipe/stage1.cpp \
+	sysc/pipe/stage1.h \
+	sysc/pipe/stage2.cpp \
+	sysc/pipe/stage2.h \
+	sysc/pipe/stage3.cpp \
+	sysc/pipe/stage3.h \
+	sysc/pkt_switch/README \
+	sysc/pkt_switch/fifo.cpp \
+	sysc/pkt_switch/fifo.h \
+	sysc/pkt_switch/main.cpp \
+	sysc/pkt_switch/pkt.h \
+	sysc/pkt_switch/pkt_switch.vcproj \
+	sysc/pkt_switch/receiver.cpp \
+	sysc/pkt_switch/receiver.h \
+	sysc/pkt_switch/sender.cpp \
+	sysc/pkt_switch/sender.h \
+	sysc/pkt_switch/switch.cpp \
+	sysc/pkt_switch/switch.h \
+	sysc/pkt_switch/switch_clk.cpp \
+	sysc/pkt_switch/switch_clk.h \
+	sysc/pkt_switch/switch_reg.h \
+	sysc/risc_cpu/README \
+	sysc/risc_cpu/README_TYPESCRIPT \
+	sysc/risc_cpu/abc.asm \
+	sysc/risc_cpu/assembler.pl \
+	sysc/risc_cpu/bios \
+	sysc/risc_cpu/bios.cpp \
+	sysc/risc_cpu/bios.h \
+	sysc/risc_cpu/dcache \
+	sysc/risc_cpu/dcache.cpp \
+	sysc/risc_cpu/dcache.h \
+	sysc/risc_cpu/decode.cpp \
+	sysc/risc_cpu/decode.h \
+	sysc/risc_cpu/directive.h \
+	sysc/risc_cpu/exec.cpp \
+	sysc/risc_cpu/exec.h \
+	sysc/risc_cpu/fetch.cpp \
+	sysc/risc_cpu/fetch.h \
+	sysc/risc_cpu/floating.cpp \
+	sysc/risc_cpu/floating.h \
+	sysc/risc_cpu/icache \
+	sysc/risc_cpu/icache.cpp \
+	sysc/risc_cpu/icache.h \
+	sysc/risc_cpu/main.cpp \
+	sysc/risc_cpu/mmxu.cpp \
+	sysc/risc_cpu/mmxu.h \
+	sysc/risc_cpu/paging.cpp \
+	sysc/risc_cpu/paging.h \
+	sysc/risc_cpu/pic.cpp \
+	sysc/risc_cpu/pic.h \
+	sysc/risc_cpu/printout \
+	sysc/risc_cpu/program \
+	sysc/risc_cpu/register \
+	sysc/risc_cpu/risc_cpu.vcproj \
+	sysc/risc_cpu/test.asm \
+	sysc/risc_cpu/test1.asm \
+	sysc/rsa/README \
+	sysc/rsa/rsa.cpp \
+	sysc/rsa/rsa.vcproj \
+	sysc/simple_bus/.DS_Store \
+	sysc/simple_bus/ChangeLog \
+	sysc/simple_bus/LEGAL \
+	sysc/simple_bus/README \
+	sysc/simple_bus/SLIDES.pdf \
+	sysc/simple_bus/simple_bus.cpp \
+	sysc/simple_bus/simple_bus.golden \
+	sysc/simple_bus/simple_bus.h \
+	sysc/simple_bus/simple_bus.vcproj \
+	sysc/simple_bus/simple_bus_arbiter.cpp \
+	sysc/simple_bus/simple_bus_arbiter.h \
+	sysc/simple_bus/simple_bus_arbiter_if.h \
+	sysc/simple_bus/simple_bus_blocking_if.h \
+	sysc/simple_bus/simple_bus_direct_if.h \
+	sysc/simple_bus/simple_bus_fast_mem.h \
+	sysc/simple_bus/simple_bus_main.cpp \
+	sysc/simple_bus/simple_bus_master_blocking.cpp \
+	sysc/simple_bus/simple_bus_master_blocking.h \
+	sysc/simple_bus/simple_bus_master_direct.cpp \
+	sysc/simple_bus/simple_bus_master_direct.h \
+	sysc/simple_bus/simple_bus_master_non_blocking.cpp \
+	sysc/simple_bus/simple_bus_master_non_blocking.h \
+	sysc/simple_bus/simple_bus_non_blocking_if.h \
+	sysc/simple_bus/simple_bus_request.h \
+	sysc/simple_bus/simple_bus_slave_if.h \
+	sysc/simple_bus/simple_bus_slow_mem.h \
+	sysc/simple_bus/simple_bus_test.h \
+	sysc/simple_bus/simple_bus_tools.cpp \
+	sysc/simple_bus/simple_bus_types.cpp \
+	sysc/simple_bus/simple_bus_types.h \
+	sysc/simple_fifo/simple_fifo.cpp \
+	sysc/simple_fifo/simple_fifo.vcproj \
+	sysc/simple_perf/simple_perf.cpp \
+	sysc/simple_perf/simple_perf.vcproj
 
-EXAMPLES_DIR = $(prefix)/examples
-all: all-recursive
+all: all-am
 
 .SUFFIXES:
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -260,141 +419,12 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-
-# This directory's subdirectories are mostly independent; you can cd
-# into them and run `make' without going through this Makefile.
-# To change the values of `make' variables: instead of editing Makefiles,
-# (1) if the variable is set in `config.status', edit `config.status'
-#     (which will cause the Makefiles to be regenerated when you run `make');
-# (2) otherwise, pass the desired values on the `make' command line.
-$(RECURSIVE_TARGETS):
-	@failcom='exit 1'; \
-	for f in x $$MAKEFLAGS; do \
-	  case $$f in \
-	    *=* | --[!k]*);; \
-	    *k*) failcom='fail=yes';; \
-	  esac; \
-	done; \
-	dot_seen=no; \
-	target=`echo $@ | sed s/-recursive//`; \
-	list='$(SUBDIRS)'; for subdir in $$list; do \
-	  echo "Making $$target in $$subdir"; \
-	  if test "$$subdir" = "."; then \
-	    dot_seen=yes; \
-	    local_target="$$target-am"; \
-	  else \
-	    local_target="$$target"; \
-	  fi; \
-	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
-	  || eval $$failcom; \
-	done; \
-	if test "$$dot_seen" = "no"; then \
-	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
-	fi; test -z "$$fail"
-
-$(RECURSIVE_CLEAN_TARGETS):
-	@failcom='exit 1'; \
-	for f in x $$MAKEFLAGS; do \
-	  case $$f in \
-	    *=* | --[!k]*);; \
-	    *k*) failcom='fail=yes';; \
-	  esac; \
-	done; \
-	dot_seen=no; \
-	case "$@" in \
-	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
-	  *) list='$(SUBDIRS)' ;; \
-	esac; \
-	rev=''; for subdir in $$list; do \
-	  if test "$$subdir" = "."; then :; else \
-	    rev="$$subdir $$rev"; \
-	  fi; \
-	done; \
-	rev="$$rev ."; \
-	target=`echo $@ | sed s/-recursive//`; \
-	for subdir in $$rev; do \
-	  echo "Making $$target in $$subdir"; \
-	  if test "$$subdir" = "."; then \
-	    local_target="$$target-am"; \
-	  else \
-	    local_target="$$target"; \
-	  fi; \
-	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
-	  || eval $$failcom; \
-	done && test -z "$$fail"
-tags-recursive:
-	list='$(SUBDIRS)'; for subdir in $$list; do \
-	  test "$$subdir" = . || ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) tags); \
-	done
-ctags-recursive:
-	list='$(SUBDIRS)'; for subdir in $$list; do \
-	  test "$$subdir" = . || ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) ctags); \
-	done
-
-ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
-	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
-	mkid -fID $$unique
 tags: TAGS
+TAGS:
 
-TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
-		$(TAGS_FILES) $(LISP)
-	set x; \
-	here=`pwd`; \
-	if ($(ETAGS) --etags-include --version) >/dev/null 2>&1; then \
-	  include_option=--etags-include; \
-	  empty_fix=.; \
-	else \
-	  include_option=--include; \
-	  empty_fix=; \
-	fi; \
-	list='$(SUBDIRS)'; for subdir in $$list; do \
-	  if test "$$subdir" = .; then :; else \
-	    test ! -f $$subdir/TAGS || \
-	      set "$$@" "$$include_option=$$here/$$subdir/TAGS"; \
-	  fi; \
-	done; \
-	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
-	shift; \
-	if test -z "$(ETAGS_ARGS)$$*$$unique"; then :; else \
-	  test -n "$$unique" || unique=$$empty_fix; \
-	  if test $$# -gt 0; then \
-	    $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
-	      "$$@" $$unique; \
-	  else \
-	    $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
-	      $$unique; \
-	  fi; \
-	fi
 ctags: CTAGS
-CTAGS: ctags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
-		$(TAGS_FILES) $(LISP)
-	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
-	unique=`for i in $$list; do \
-	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
-	  done | \
-	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
-	      END { if (nonempty) { for (i in files) print i; }; }'`; \
-	test -z "$(CTAGS_ARGS)$$unique" \
-	  || $(CTAGS) $(CTAGSFLAGS) $(AM_CTAGSFLAGS) $(CTAGS_ARGS) \
-	     $$unique
+CTAGS:
 
-GTAGS:
-	here=`$(am__cd) $(top_builddir) && pwd` \
-	  && $(am__cd) $(top_srcdir) \
-	  && gtags -i $(GTAGS_ARGS) "$$here"
-
-distclean-tags:
-	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
@@ -426,48 +456,19 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
-	@list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
-	  if test "$$subdir" = .; then :; else \
-	    test -d "$(distdir)/$$subdir" \
-	    || $(MKDIR_P) "$(distdir)/$$subdir" \
-	    || exit 1; \
-	  fi; \
-	done
-	@list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
-	  if test "$$subdir" = .; then :; else \
-	    dir1=$$subdir; dir2="$(distdir)/$$subdir"; \
-	    $(am__relativize); \
-	    new_distdir=$$reldir; \
-	    dir1=$$subdir; dir2="$(top_distdir)"; \
-	    $(am__relativize); \
-	    new_top_distdir=$$reldir; \
-	    echo " (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) top_distdir="$$new_top_distdir" distdir="$$new_distdir" \\"; \
-	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
-	    ($(am__cd) $$subdir && \
-	      $(MAKE) $(AM_MAKEFLAGS) \
-	        top_distdir="$$new_top_distdir" \
-	        distdir="$$new_distdir" \
-		am__remove_distdir=: \
-		am__skip_length_check=: \
-		am__skip_mode_fix=: \
-	        distdir) \
-	      || exit 1; \
-	  fi; \
-	done
 check-am: all-am
-check: check-recursive
+check: check-am
 all-am: Makefile
-installdirs: installdirs-recursive
-installdirs-am:
-install: install-recursive
-install-exec: install-exec-recursive
-install-data: install-data-recursive
-uninstall: uninstall-recursive
+installdirs:
+install: install-am
+install-exec: install-exec-am
+install-data: install-data-am
+uninstall: uninstall-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 
-installcheck: installcheck-recursive
+installcheck: installcheck-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
 	  install_sh_PROGRAM="$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \
@@ -484,97 +485,97 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-clean: clean-recursive
+clean: clean-am
 
 clean-am: clean-generic clean-libtool mostlyclean-am
 
-distclean: distclean-recursive
+distclean: distclean-am
 	-rm -f Makefile
-distclean-am: clean-am distclean-generic distclean-tags
+distclean-am: clean-am distclean-generic
 
-dvi: dvi-recursive
+dvi: dvi-am
 
 dvi-am:
 
-html: html-recursive
+html: html-am
 
 html-am:
 
-info: info-recursive
+info: info-am
 
 info-am:
 
 install-data-am: install-data-local
 
-install-dvi: install-dvi-recursive
+install-dvi: install-dvi-am
 
 install-dvi-am:
 
 install-exec-am:
 
-install-html: install-html-recursive
+install-html: install-html-am
 
 install-html-am:
 
-install-info: install-info-recursive
+install-info: install-info-am
 
 install-info-am:
 
 install-man:
 
-install-pdf: install-pdf-recursive
+install-pdf: install-pdf-am
 
 install-pdf-am:
 
-install-ps: install-ps-recursive
+install-ps: install-ps-am
 
 install-ps-am:
 
 installcheck-am:
 
-maintainer-clean: maintainer-clean-recursive
+maintainer-clean: maintainer-clean-am
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
-mostlyclean: mostlyclean-recursive
+mostlyclean: mostlyclean-am
 
 mostlyclean-am: mostlyclean-generic mostlyclean-libtool
 
-pdf: pdf-recursive
+pdf: pdf-am
 
 pdf-am:
 
-ps: ps-recursive
+ps: ps-am
 
 ps-am:
 
 uninstall-am: uninstall-local
 
-.MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) ctags-recursive \
-	install-am install-strip tags-recursive
+.MAKE: install-am install-strip
 
-.PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
-	all all-am check check-am clean clean-generic clean-libtool \
-	ctags ctags-recursive distclean distclean-generic \
-	distclean-libtool distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-data-local install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs installdirs-am \
+.PHONY: all all-am check check-am clean clean-generic clean-libtool \
+	distclean distclean-generic distclean-libtool distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-data-local install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am uninstall-local
+	uninstall uninstall-am uninstall-local
 
 
 install-data-local:
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(EXAMPLES_DIR)
+	@for f in $(syscexamplesfiles); do \
+	  d=`echo $$f | sed -e s,/[^/]*$$,,`; \
+	  $(mkinstalldirs) $(DESTDIR)$(syscexamplesdir)/$$d; \
+	  $(INSTALL_DATA) $$f $(DESTDIR)$(syscexamplesdir)/$$f; \
+	done
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
-	-rmdir $(EXAMPLES_DIR)
+	-rmdir $(syscexamplesdir)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

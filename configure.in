@@ -248,6 +248,7 @@ dnl
 AC_OUTPUT(
  Makefile 
  docs/Makefile 
+ examples/Makefile 
  src/Makefile 
  src/sysc/Makefile 
  src/sysc/communication/Makefile 
@@ -257,9 +258,6 @@ AC_OUTPUT(
  src/sysc/datatypes/int/Makefile 
  src/sysc/datatypes/misc/Makefile 
  src/sysc/kernel/Makefile 
- src/sysc/tracing/Makefile 
- src/sysc/qt/Makefile 
- src/sysc/utils/Makefile 
  src/sysc/packages/Makefile 
  src/sysc/packages/boost/Makefile 
  src/sysc/packages/boost/bind/Makefile 
@@ -267,33 +265,15 @@ AC_OUTPUT(
  src/sysc/packages/boost/config/compiler/Makefile 
  src/sysc/packages/boost/config/platform/Makefile 
  src/sysc/packages/boost/config/stdlib/Makefile 
+ src/sysc/packages/boost/detail/Makefile 
  src/sysc/packages/boost/mpl/Makefile 
  src/sysc/packages/boost/mpl/aux_/Makefile 
  src/sysc/packages/boost/mpl/aux_/config/Makefile 
- src/sysc/packages/boost/detail/Makefile 
  src/sysc/packages/boost/utility/Makefile 
  src/sysc/packages/boost/utility/detail/Makefile 
- examples/Makefile 
- examples/sysc/Makefile 
- examples/sysc/fir/Makefile 
- examples/sysc/fft/Makefile 
- examples/sysc/fft/fft_flpt/Makefile 
- examples/sysc/fft/fft_fxpt/Makefile 
- examples/sysc/pipe/Makefile 
- examples/sysc/pkt_switch/Makefile 
- examples/sysc/rsa/Makefile 
- examples/sysc/simple_bus/Makefile 
- examples/sysc/simple_fifo/Makefile 
- examples/sysc/simple_perf/Makefile 
- examples/sysc/2.1/Makefile 
- examples/sysc/2.1/dpipe/Makefile 
- examples/sysc/2.1/forkjoin/Makefile 
- examples/sysc/2.1/reset_signal_is/Makefile 
- examples/sysc/2.1/sc_export/Makefile 
- examples/sysc/2.1/sc_report/Makefile 
- examples/sysc/2.1/scx_barrier/Makefile 
- examples/sysc/2.1/scx_mutex_w_policy/Makefile 
- examples/sysc/2.1/specialized_signals/Makefile 
+ src/sysc/qt/Makefile 
+ src/sysc/tracing/Makefile 
+ src/sysc/utils/Makefile 
 )
 
 dnl Taf!

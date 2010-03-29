@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/Make-rules
 
-pdfdir = $(prefix)/share/systemc22/doc
+pdfdir = $(prefix)/share/doc/systemc22/docs
 pdf_DATA = \
 	FuncSpec20.pdf \
 	IEEE1666_specification \
