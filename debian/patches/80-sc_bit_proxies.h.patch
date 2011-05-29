@@ -1,7 +1,7 @@
-diff --git a/src/sysc/datatypes/bit/sc_bit_proxies.h b/src/sysc/datatypes/bit/sc_bit_proxies.h
+diff --git src/sysc/datatypes/bit/sc_bit_proxies.h src/sysc/datatypes/bit/sc_bit_proxies.h
 index 40bff6f..974302f 100644
---- a/src/sysc/datatypes/bit/sc_bit_proxies.h
-+++ b/src/sysc/datatypes/bit/sc_bit_proxies.h
+--- src/sysc/datatypes/bit/sc_bit_proxies.h
++++ src/sysc/datatypes/bit/sc_bit_proxies.h
 @@ -713,7 +713,7 @@ public:
  
  protected:
